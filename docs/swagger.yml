@@ -1,0 +1,84 @@
+swagger: "2.0"
+info:
+  description: "This swagger file describes the estimation endpoints of Inventivetalent's Hypixel Timers."
+  version: "1.0.0"
+  title: "HypixelMagmaBossTimer"
+  contact:
+    name: "Inventivetalent"
+    url: "https://inventivetalent.org"
+  license:
+    name: "MIT-License"
+    url: "https://opensource.org/licenses/MIT"
+host: "hypixel-api.inventivetalent.org"
+basePath: "/api/skyblock"
+paths:
+  "/bosstimer/{boss}/estimatedSpawn":
+    get:
+      parameters:
+        - name: "boss"
+          in: "path"
+          description: "The boss."
+          required: true
+          type: "string"
+          enum:
+            - "magma"
+        - name: "user-agent"
+          in: "header"
+          description: "The user agent that should be used."
+          required: false
+          default: "swagger-ui/1.0.0"
+      responses:
+        "200":
+          description: "OK"
+      tags:
+        - "Boss Timers"
+  "/{event}/estimate":
+    get:
+      parameters:
+        - name: "event"
+          in: "path"
+          description: "The event."
+          required: true
+          enum:
+            - "darkauction"
+            - "zoo"
+            - "spookyFestival"
+            - "jerryWorkshop"
+            - "winter"
+            - "newYear"
+        - name: "user-agent"
+          in: "header"
+          description: "The user agent that should be used."
+          required: false
+          default: "swagger-ui/1.0.0"
+      responses:
+        "200":
+          description: "OK"
+      tags:
+        - "Event Timers"
+  "/bank/{event}/estimate":
+    get:
+      parameters:
+        - name: "event"
+          in: "path"
+          description: "The event."
+          required: true
+          enum:
+            - "interest"
+        - name: "user-agent"
+          in: "header"
+          description: "The user agent that should be used."
+          required: false
+          default: "swagger-ui/1.0.0"
+      responses: 
+        "200":
+          description: "OK"
+      tags:
+        - "Event Timers"
+schemes:
+  - "https"
+tags:
+  - name: "Boss Timers"
+    description: "Endpoints for boss timers"
+  - name: "Event Timers"
+    description: "Endpoints for event timers"
